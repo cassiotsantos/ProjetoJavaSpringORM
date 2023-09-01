@@ -25,11 +25,11 @@ public class ProdutoServiceImpl implements ProdutoService {
     }
     @Override
     public Optional<Produto> buscarProdutoPorId(Integer id) {
-        return produtoRepository.findById(id);
+        return produtoRepository.findByIdAndQuantidadeGreaterThan(id,0);
     }
     @Override
     public List<Produto> buscarTodosProdutos() {
-        return produtoRepository.findAll();
+        return produtoRepository.findAllByQuantidadeIsGreaterThan(0);
     }
     @Override
     public void excluirProduto(Integer id) {
